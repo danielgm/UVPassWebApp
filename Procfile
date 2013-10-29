@@ -1,1 +1,1 @@
-web: python flaskapp/__init__.py
+web: python main.py
