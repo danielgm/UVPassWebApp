@@ -19,7 +19,7 @@ app.config['TEMP_DIR'] = TEMP_DIR
 app.config['COMPOSITION_DIR'] = COMPOSITION_DIR
 app.config['TEXTURE_EXTENSIONS'] = TEXTURE_EXTENSIONS
 app.config['MONGODB_SETTINGS'] = {'DB': os.environ['MONGODB_DATABASE']}
-app.config['SECRET_KEY'] = os.environ['MONGODB_SECRET'] #'\xb6\xd4\x7f\xb4\x1cV\x82>U\xe2A\x08\xdd\n\xdc\x17<J+!\x92\x113\xbb'
+app.config['SECRET_KEY'] = os.environ['MONGODB_SECRET']
 
 def register_blueprints(app):
 	# Prevents circular imports.
