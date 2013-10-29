@@ -19,7 +19,7 @@ beautifulsoup4==4.3.1
 #bonjour-py==0.3
 certifi==0.0.8
 chardet==1.1
-closure-linter==2.3.7
+#closure-linter==2.3.7
 flask-mongoengine==0.7.0
 httplib2==0.8
 include-server==3.1-toolwhip.1
