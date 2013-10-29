@@ -12,7 +12,7 @@ COMPOSITION_DIR = os.path.dirname(os.path.abspath(__file__)) + '/static/composit
 TEXTURE_EXTENSIONS = set(['jpg', 'jpeg', 'png'])
 
 app = Flask(__name__)
-app.debug = True
+app.debug = 'DEBUG' in os.environ
 
 app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 
