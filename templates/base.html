@@ -1,0 +1,13 @@
+<!doctype html>
+<head>
+	{% block head %}
+	<title>{% block title %}{% endblock %}</title>
+	{% endblock %}
+</head>
+<body>
+	<h1>{% block pagetitle %}{% endblock %}</h1>
+	<ul>{% block breadcrumb %}{% endblock %}</ul>
+	{% block content %}
+	{% endblock %}
+</body>
+</html>
