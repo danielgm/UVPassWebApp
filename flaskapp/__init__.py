@@ -2,8 +2,8 @@ from flask import Flask, redirect, render_template, request, url_for
 import os
 from werkzeug import secure_filename
 
-assert 'MONGODB_DATABASE' in os.environ
-assert 'MONGODB_SECRET' in os.environ
+
+assert 'SECRET_KEY' in os.environ
 
 TEXTURE_DIR = os.path.dirname(os.path.abspath(__file__)) + '/static/textures'
 TEMP_DIR = os.path.dirname(os.path.abspath(__file__)) + '/temp'
@@ -13,13 +13,18 @@ TEXTURE_EXTENSIONS = set(['jpg', 'jpeg', 'png'])
 
 app = Flask(__name__)
 app.debug = True
+
+app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
+
 app.config['TEXTURE_DIR'] = TEXTURE_DIR
 app.config['BITS_DIR'] = BITS_DIR
 app.config['TEMP_DIR'] = TEMP_DIR
 app.config['COMPOSITION_DIR'] = COMPOSITION_DIR
 app.config['TEXTURE_EXTENSIONS'] = TEXTURE_EXTENSIONS
-app.config['MONGODB_SETTINGS'] = {'DB': os.environ['MONGODB_DATABASE']}
-app.config['SECRET_KEY'] = os.environ['MONGODB_SECRET']
+
+for key in ['MONGODB_HOST', 'MONGODB_PORT', 'MONGODB_DB', 'MONGODB_USERNAME', 'MONGODB_PASSWORD']:
+	if key in os.environ:
+		app.config[key] = os.environ[key]
 
 def register_blueprints():
 	# Prevent circular imports.
