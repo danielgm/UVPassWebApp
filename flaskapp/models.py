@@ -2,7 +2,7 @@
 import datetime
 from flask import url_for
 from flask.ext.mongoengine import MongoEngine
-from UVPassWebApp import app
+from flaskapp import app
 
 db = MongoEngine(app)
 

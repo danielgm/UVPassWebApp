@@ -21,17 +21,13 @@ app.config['TEXTURE_EXTENSIONS'] = TEXTURE_EXTENSIONS
 app.config['MONGODB_SETTINGS'] = {'DB': os.environ['MONGODB_DATABASE']}
 app.config['SECRET_KEY'] = os.environ['MONGODB_SECRET']
 
-def register_blueprints(app):
-	# Prevents circular imports.
-	from UVPassWebApp.views import textures
+def register_blueprints():
+	# Prevent circular imports.
+	from views import textures
 	app.register_blueprint(textures)
-
-register_blueprints(app)
+register_blueprints()
 
 @app.route('/')
 def index():
 	return 'Hello world!'
-
-if __name__ == '__main__':
-	app.run()
 

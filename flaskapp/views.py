@@ -3,8 +3,8 @@ import compositor
 from flask import Blueprint, request, redirect, render_template, url_for
 from flask.ext.mongoengine.wtf import model_form
 from flask.views import MethodView
-from UVPassWebApp.models import Texture
-from UVPassWebApp import app
+from models import Texture
+from flaskapp import app
 import os
 from werkzeug import secure_filename
 
@@ -63,5 +63,9 @@ class DetailView(MethodView):
 		texture = Texture.objects.get_or_404(slug=slug)
 		return render_template('texture.html', texture=texture)
 
+def register_blueprints():
+	app.register_blueprint(textures)
+
 textures.add_url_rule('/texture', view_func=ListView.as_view('list'))
 textures.add_url_rule('/texture/<slug>', view_func=DetailView.as_view('detail'))
+
