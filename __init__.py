@@ -23,7 +23,7 @@ app.config['SECRET_KEY'] = os.environ['MONGODB_SECRET']
 
 def register_blueprints(app):
 	# Prevents circular imports.
-	from moonmemews.views import textures
+	from UVPassWebApp.views import textures
 	app.register_blueprint(textures)
 
 register_blueprints(app)
